@@ -1,0 +1,9 @@
+
+003 GPT-Models
+https://github.com/l-newbould/intro-to-llms-365/blob/2665dfbe8bee040f148dcf30b74baea0f36140f2/GPT%20Models.ipynb
+
+006 Text-for-the-messages-and-prompt-variables
+https://github.com/l-newbould/intro-to-llms-365/blob/2665dfbe8bee040f148dcf30b74baea0f36140f2/txt_files/gpt_lesson_text.txt
+
+007 Text-for-the-messages-variable
+https://github.com/l-newbould/intro-to-llms-365/blob/2665dfbe8bee040f148dcf30b74baea0f36140f2/txt_files/gpt_lesson_text.txt

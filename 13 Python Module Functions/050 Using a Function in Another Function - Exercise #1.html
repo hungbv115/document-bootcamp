@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coding Assignment</title>
+
+    <style>
+      body {
+        font-family: sf pro text, -apple-system, BlinkMacSystemFont, Roboto,
+          segoe ui, Helvetica, Arial, sans-serif, apple color emoji,
+          segoe ui emoji, segoe ui symbol;
+        font-weight: 400;
+        line-height: 22.4px;
+        font-size: 16px;
+      }
+      p, ul, ol {
+        font-size: 16px;
+        font-weight: 400;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-weight: bold;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        max-width: none;
+      }
+      .code-snippet {
+        background-color: #fff;
+        border: 1px solid #d1d7dc;
+        color: #b4690e;
+        font-size: 90%;
+        padding: 0.2rem 0.4rem;
+      }
+      .code-block {
+        background-color: #fff;
+        color: #b4690e;
+        font-size: 90%;
+      }
+      .black-block {
+        color: #000000;
+      }
+      .italic-text {
+        font-style: italic;
+      }
+    </style>
+  </head>
+
+  <body onload="main()">
+    <h1 id="coding-title"></h1>
+    <div>
+      <h2>Instructions</h2>
+      <div id="coding-instructions"></div>
+    </div>
+    <div>
+      <h2>Test(s)</h2>
+      <div id="coding-tests"></div>
+    </div>
+    <div>
+      <h2>Solution(s)</h2>
+      <div id="coding-solutions"></div>
+    </div>
+
+    <script>
+      const quizData = {"title": "050 Using a Function in Another Function - Exercise #1", "hasInstructions": true, "hasTests": true, "hasSolutions": true, "instructions": "<p>Define a function called <code>plus_five()</code> that adds 5 to its argument. Then, define another function named <code>m_by_3()</code> that multiplies the argument (the result obtained from <code>plus_five()</code>) by 3. Verify your code was correct by calling the second function with an argument of 5. Was your output equal to 30?</p>", "tests": [{"file_name": "evaluate.py", "content": "import unittest\r\n\r\ninput_file = 'exercise.py'\r\n\r\nclass Test(unittest.TestCase):\r\n    \"\"\"\r\n    The basic class that inherits unittest.TestCase\r\n    \"\"\"\r\n\r\n    def plus_five(self, x):\r\n        return x + 5\r\n\r\n    def m_by_3(self, x):\r\n        return self.plus_five(x) * 3\r\n\r\n    def test_s6_e3_01(self):\r\n        # Import answer \r\n        import exercise as answer\r\n        with open(input_file, \"r\") as f:\r\n            code = f.read()\r\n\r\n        # Test plus_five\r\n        self.assertEqual(answer.plus_five(921), self.plus_five(921))\r\n        self.assertEqual(answer.plus_five(-2), self.plus_five(-2))\r\n\r\n        # Test m_by_3\r\n        self.assertEqual(answer.m_by_3(921), self.m_by_3(921))\r\n        self.assertEqual(answer.m_by_3(-2), self.m_by_3(-2))\r\n\r\n        # filter comments\r\n        splited_code = code.split('\\n')\r\n        splited_code = [elem.strip(' ') for elem in splited_code]\r\n        splited_code = [elem.split(\"#\")[0]\r\n                        for elem in splited_code if not elem.startswith('#')]\r\n        uncommented_code = '\\n'.join(splited_code)\r\n\r\n        self.assertEqual(True, '\\nm_by_3(5)' in uncommented_code.replace(\" \",\"\"))\r\n\r\nTest().test_s6_e3_01()"}], "solutions": [{"file_name": "exercise.py", "content": "def plus_five(x):\r\n    return x + 5\r\n\r\ndef m_by_3(x):\r\n    return plus_five(x) * 3\r\n\r\nm_by_3(5)\r\n"}]};
+
+      function renderCodeList(rootElement, codeList, className, titlePrefix) {
+        for (var i = 0; i < codeList.length; i++) {
+          var elem = codeList[i];
+          var jsElem = document.createElement("div");
+          jsElem.className = className;
+          var jsElemTitle = document.createElement("h3");
+          jsElemTitle.innerHTML = titlePrefix + " " + (i + 1);
+          var jsElemBody = document.createElement("code");
+          jsElemBody.className = "code-block black-block";
+          jsElemBody.innerHTML = "<pre>" + elem.content + "</pre>";
+          jsElem.appendChild(jsElemTitle);
+          jsElem.appendChild(jsElemBody);
+          rootElement.appendChild(jsElem);
+        }
+      }
+      
+      function main() {
+        // display the assignment
+        var codingTitle = document.getElementById("coding-title");
+        codingTitle.innerHTML = quizData.title;
+        
+        var codingInstructions = document.getElementById("coding-instructions");
+        if (quizData.hasInstructions) {
+          codingInstructions.innerHTML = quizData.instructions;
+        } else {
+          codingInstructions.innerHTML = "<span class=\"italic-text\">" + quizData.instructions
+            + "</span>";
+        }
+
+        // display the test(s)
+        var codingTests = document.getElementById("coding-tests");
+        if (!quizData.hasTests) {
+          codingTests.innerHTML = "<span class=\"italic-text\">" + quizData.tests + "</span>";
+        } else {
+          renderCodeList(codingTests, quizData.tests, "coding-test", "Test");
+        }
+        
+
+        // display the solution(s)
+        var codingSolutions = document.getElementById("coding-solutions");
+        if (!quizData.hasSolutions) {
+          codingSolutions.innerHTML = "<span class=\"italic-text\">" + quizData.solutions + "</span>";
+        } else {
+          renderCodeList(codingSolutions, quizData.solutions, "coding-solution", "Solution");
+        }
+      }
+    </script>
+  </body>
+</html>

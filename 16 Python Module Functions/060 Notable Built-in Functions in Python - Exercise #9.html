@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coding Assignment</title>
+
+    <style>
+      body {
+        font-family: sf pro text, -apple-system, BlinkMacSystemFont, Roboto,
+          segoe ui, Helvetica, Arial, sans-serif, apple color emoji,
+          segoe ui emoji, segoe ui symbol;
+        font-weight: 400;
+        line-height: 22.4px;
+        font-size: 16px;
+      }
+      p, ul, ol {
+        font-size: 16px;
+        font-weight: 400;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-weight: bold;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        max-width: none;
+      }
+      .code-snippet {
+        background-color: #fff;
+        border: 1px solid #d1d7dc;
+        color: #b4690e;
+        font-size: 90%;
+        padding: 0.2rem 0.4rem;
+      }
+      .code-block {
+        background-color: #fff;
+        color: #b4690e;
+        font-size: 90%;
+      }
+      .black-block {
+        color: #000000;
+      }
+      .italic-text {
+        font-style: italic;
+      }
+    </style>
+  </head>
+
+  <body onload="main()">
+    <h1 id="coding-title"></h1>
+    <div>
+      <h2>Instructions</h2>
+      <div id="coding-instructions"></div>
+    </div>
+    <div>
+      <h2>Test(s)</h2>
+      <div id="coding-tests"></div>
+    </div>
+    <div>
+      <h2>Solution(s)</h2>
+      <div id="coding-solutions"></div>
+    </div>
+
+    <script>
+      const quizData = {"title": "060 Notable Built-in Functions in Python - Exercise #9", "hasInstructions": true, "hasTests": true, "hasSolutions": true, "instructions": "<p>Create a function, called <code>distance_from_zero()</code>, that returns the absolute value of a provided single argument and prints a statement <code>\"Not possible\"</code> if the argument provided is not a number. To solve the task, use the <code><strong>type()</strong></code> function in the body of <code><strong>distance_from_zero()</strong></code>.</p><p>Call the function with the values of <code>-10</code> and <code>\"cat\"</code> to verify it works correctly.</p>", "tests": [{"file_name": "evaluate.py", "content": "import sys\r\nfrom io import StringIO\r\nfrom unittest import TestCase\r\n\r\nclass Evaluate(TestCase):\r\n\r\n    def test_solution(self):\r\n        # Redirect stdout to capture print statements\r\n        old_stdout = sys.stdout\r\n        sys.stdout = new_stdout = StringIO()\r\n\r\n        # Load the student's code from a file\r\n        with open('exercise.py', 'r') as file:\r\n            student_code = file.read()\r\n\r\n        # Executing the student's code\r\n        local_vars = {}\r\n        exec(student_code, {}, local_vars)\r\n\r\n        # Retrieve the function\r\n        distance_from_zero = local_vars[\"distance_from_zero\"]\r\n\r\n        # Call the function with an integer input and capture the return value\r\n        result = distance_from_zero(-10)\r\n        if result is not None:\r\n            print(result)  # Print the result if it's not None\r\n\r\n        # Reset the StringIO to capture only the output from the next function call\r\n        new_stdout.truncate(0)\r\n        new_stdout.seek(0)\r\n\r\n        # Call the function with a string input which should trigger \"Not possible\"\r\n        distance_from_zero(\"cat\")\r\n\r\n        # Capture the output after the second function call\r\n        student_output = new_stdout.getvalue().strip()\r\n\r\n        # Expected output: \"10\\nNot possible\"\r\n        expected_output = \"10\\nNot possible\"\r\n\r\n        # Append the first function call result to the captured output for comparison\r\n        complete_output = f\"{result}\\n{student_output}\" if result is not None else student_output\r\n\r\n        # Restore stdout\r\n        sys.stdout = old_stdout\r\n\r\n        # Check if the complete output matches the expected output\r\n        self.assertEqual(complete_output, expected_output, \"Output does not match the expected result\")\r\n        \r\n        print(complete_output)\r\n\r\nif __name__ == \"__main__\":\r\n    Evaluate().test_solution()\r\n"}], "solutions": [{"file_name": "exercise.py", "content": "def distance_from_zero(x):\r\n    if type(x) == int:\r\n        return abs(x)\r\n    else:\r\n        print (\"Not possible\")\r\n        \r\ndistance_from_zero(-10)\r\ndistance_from_zero(\"cat\")"}]};
+
+      function renderCodeList(rootElement, codeList, className, titlePrefix) {
+        for (var i = 0; i < codeList.length; i++) {
+          var elem = codeList[i];
+          var jsElem = document.createElement("div");
+          jsElem.className = className;
+          var jsElemTitle = document.createElement("h3");
+          jsElemTitle.innerHTML = titlePrefix + " " + (i + 1);
+          var jsElemBody = document.createElement("code");
+          jsElemBody.className = "code-block black-block";
+          jsElemBody.innerHTML = "<pre>" + elem.content + "</pre>";
+          jsElem.appendChild(jsElemTitle);
+          jsElem.appendChild(jsElemBody);
+          rootElement.appendChild(jsElem);
+        }
+      }
+      
+      function main() {
+        // display the assignment
+        var codingTitle = document.getElementById("coding-title");
+        codingTitle.innerHTML = quizData.title;
+        
+        var codingInstructions = document.getElementById("coding-instructions");
+        if (quizData.hasInstructions) {
+          codingInstructions.innerHTML = quizData.instructions;
+        } else {
+          codingInstructions.innerHTML = "<span class=\"italic-text\">" + quizData.instructions
+            + "</span>";
+        }
+
+        // display the test(s)
+        var codingTests = document.getElementById("coding-tests");
+        if (!quizData.hasTests) {
+          codingTests.innerHTML = "<span class=\"italic-text\">" + quizData.tests + "</span>";
+        } else {
+          renderCodeList(codingTests, quizData.tests, "coding-test", "Test");
+        }
+        
+
+        // display the solution(s)
+        var codingSolutions = document.getElementById("coding-solutions");
+        if (!quizData.hasSolutions) {
+          codingSolutions.innerHTML = "<span class=\"italic-text\">" + quizData.solutions + "</span>";
+        } else {
+          renderCodeList(codingSolutions, quizData.solutions, "coding-solution", "Solution");
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+
+003 Question-and-answer-models-with-BERT
+https://github.com/l-newbould/intro-to-llms-365/blob/2665dfbe8bee040f148dcf30b74baea0f36140f2/Question%20and%20answer%20models%20with%20BERT.ipynb
+
+004 Text-for-the-answer-document-variable
+https://github.com/l-newbould/intro-to-llms-365/blob/2665dfbe8bee040f148dcf30b74baea0f36140f2/txt_files/bert_lesson_text.txt
+
+006 Text-for-the-sunset-motors-context-variable
+https://github.com/l-newbould/intro-to-llms-365/blob/2665dfbe8bee040f148dcf30b74baea0f36140f2/txt_files/bert_lesson_text.txt

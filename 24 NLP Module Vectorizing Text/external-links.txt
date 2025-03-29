@@ -1,0 +1,9 @@
+
+002 5.2-Bag-of-Words
+https://github.com/l-newbould/introtonlp-365/blob/8469cad2797589d9c9af00b1a47da3e2090e7a10/5.2%20Bag%20of%20Words.ipynb
+
+002 Text-for-the-data-variable
+https://github.com/l-newbould/introtonlp-365/blob/8469cad2797589d9c9af00b1a47da3e2090e7a10/txt_files/bagofwords.txt
+
+003 5.3-TF-IDF
+https://github.com/l-newbould/introtonlp-365/blob/8469cad2797589d9c9af00b1a47da3e2090e7a10/5.3%20TF-IDF%20in%20python.ipynb

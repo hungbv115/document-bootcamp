@@ -1,0 +1,12 @@
+
+002 Building-a-Custom-Classifier
+https://github.com/l-newbould/introtonlp-365/blob/8469cad2797589d9c9af00b1a47da3e2090e7a10/7.2-4%20Custom%20classifier%20(combined).ipynb
+
+002 Text-for-the-data-variable
+https://github.com/l-newbould/introtonlp-365/blob/8469cad2797589d9c9af00b1a47da3e2090e7a10/txt_files/customclassifier.txt
+
+003 Building-a-Custom-Classifier
+https://github.com/l-newbould/introtonlp-365/blob/8469cad2797589d9c9af00b1a47da3e2090e7a10/7.2-4%20Custom%20classifier%20(combined).ipynb
+
+004 Building-a-Custom-Classifier
+https://github.com/l-newbould/introtonlp-365/blob/8469cad2797589d9c9af00b1a47da3e2090e7a10/7.2-4%20Custom%20classifier%20(combined).ipynb

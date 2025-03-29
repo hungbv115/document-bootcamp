@@ -1,0 +1,15 @@
+
+002 3.2-Parts-of-Speech-POS-Tagging
+https://github.com/l-newbould/introtonlp-365/blob/8469cad2797589d9c9af00b1a47da3e2090e7a10/3.2%20POS%20tagging.ipynb
+
+002 Text-for-the-emma-ja-variable
+https://github.com/l-newbould/introtonlp-365/blob/8469cad2797589d9c9af00b1a47da3e2090e7a10/txt_files/pos_tagging.txt
+
+003 3.3-Named-Entity-Recognition
+https://github.com/l-newbould/introtonlp-365/blob/8469cad2797589d9c9af00b1a47da3e2090e7a10/3.3%20NER.ipynb
+
+003 Text-for-the-google-text-variable
+https://github.com/l-newbould/introtonlp-365/blob/8469cad2797589d9c9af00b1a47da3e2090e7a10/txt_files/ner.txt
+
+005 3.4-Practical-task
+https://github.com/l-newbould/introtonlp-365/blob/8469cad2797589d9c9af00b1a47da3e2090e7a10/3.4%20Practical.ipynb
